@@ -1,0 +1,74 @@
+import React from 'react';
+import './App.css';
+import ToodoList from "./Toodolist";
+
+
+export type TaskType = {
+    id: number
+    title: string
+    isDone: boolean
+}
+
+// C_R_U_D
+function App() {
+
+    const todoListTitle_1: string = "What to learn"
+    const todoListTitle_2: string = "What to by"
+    const tasks_1: Array<TaskType> = [
+        {id: 1, title: "HTML", isDone: true},
+        {id: 2, title: "CSS", isDone: true},
+        {id: 3, title: "JS/TS", isDone: true},
+    ]
+
+    const tasks_2: Array<TaskType> = [
+        {id: 4, title: "CHAMPAGNE", isDone: true},
+        {id: 5, title: "BEER", isDone: true},
+        {id: 6, title: "FISH", isDone: true},
+    ]
+    return (
+        <div className="App">
+            <ToodoList title={todoListTitle_1}
+                       tasks={tasks_1}
+            />
+            <ToodoList title={todoListTitle_2}
+                       tasks={tasks_2}
+            />
+
+        </div>
+    )
+}
+
+export default App;
+
+
+
+
+function ToodoList (props: ToodoListPropsType) {
+    return (
+        <div className="App">
+            <div>
+                <h3>{props.title}</h3>
+                <div>
+                    <input/>
+                    <button>+</button>
+                </div>
+                <ul>
+                    <li><input type="checkbox" checked={props.tasks[0].isDone}/> <span>{props.tasks[0].title}</span></li>
+                    <li><input type="checkbox" checked={props.tasks[1].isDone}/> <span>{props.tasks[1].title}</span></li>
+                    <li><input type="checkbox" checked={props.tasks[2].isDone}/> <span>{props.tasks[2].title}</span></li>
+                </ul>
+                <div>
+                    <button>All</button>
+                    <button>Active</button>
+                    <button>Completed</button>
+                </div>
+            </div>
+        </div>
+
+    )
+}
+
+export default ToodoList;
+
+
+
